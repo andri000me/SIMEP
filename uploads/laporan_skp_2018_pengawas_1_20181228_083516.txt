@@ -1,0 +1,6 @@
+1. Logout tidak berfungsi
+2. Guru tidak bisa menambah
+3. Data siswa yang masuk tidak tampil (operator lembaga)
+4. Data Prestasi tidak tampil (operator lembaga)
+5. error saat menambahkan data lembaga 
+6. Data siswa tidak dapat diakses pada (admin)

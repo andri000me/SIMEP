@@ -1,0 +1,61 @@
+if current value == value yg disimpan maka echo selected
+
+Select Pegawainya:
+edit penilai
+edit validator
+edit lembaga
+
+
+PENILAIAN SKP
+---------------------------------------------------
+jumlah_kuantitas : 
+if(kuan_output_tgt > 0){
+	jumlah_kuantitas = 1;
+}else{
+	jumlah_kuantitas = 0;
+}
+---------------------------------------------------
+persen_waktu = 100 - (wkt_real / wkt_tgt * 100)
+persen_biaya = 100 - (biaya_real / biaya_tgt * 100)
+---------------------------------------------------
+kuantitas = kuan_output_real / kuan_output_tgt * 100
+kualitas = kual_mutu_real / kual_mutu_tgt * 100
+---------------------------------------------------
+RW_nol = ((1.76 * wkt_tgt - wkt_real) / wkt_tgt) * 0 * 100
+RW_kurang_24 = ((1.76 * wkt_tgt - wkt_real) / wkt_tgt) * 100
+RW_lebih_24 = 76 - ((((1.76 * wkt_tgt - wkt_real) / wkt_tgt) * 100) - 100)
+---------------------------------------------------
+waktu :
+if(persen_waktu > 24){
+	waktu = RW_lebih_24
+}else if(persen_waktu == 0){
+	waktu = RW_nol
+}else
+	waktu = RW_kurang_24
+}
+---------------------------------------------------
+presentase_tk_efisiensi_wkt (presentase tingkat efisiensi waktu dari target waktu) = 100% - (wkt_real / wkt_tgt * 100%)
+---------------------------------------------------
+RB_nol = ((1.76 * biaya_tgt - biaya_real) / biaya_tgt) * 0 * 100
+RB_kurang_24 = ((1.76 * biaya_tgt - biaya_real) / biaya_tgt) * 100
+RB_lebih_24 = 76 - ((((1.76 * biaya_tgt - biaya_real) / biaya_tgt) * 100) - 100)
+---------------------------------------------------
+biaya :
+if(persen_biaya > 24){
+	waktu = RB_lebih_24
+}else if(persen_biaya == 0){
+	waktu = RB_nol
+}else
+	waktu = RB_kurang_24
+}
+---------------------------------------------------
+presentase_tk_efisiensi_biaya (presentase tingkat efisiensi biaya dari target biaya) = 100% - (biaya_real / biaya_tgt * 100%)
+---------------------------------------------------
+total_ak = sum(seluruh_ak_kegiatan_dlm_satu_skp)
+---------------------------------------------------
+iferror(value_yg_dicek, value_jika_nilai_yg_dicek_error)
+
+Penghitungan = iferror(sum(kuantitas, kualitas, waktu, biaya), sum(kuantitas, kualitas, waktu))
+
+nilai_capaian_skp = 
+
